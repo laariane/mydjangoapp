@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% if etudiant_list %}
+<ul>
+	{%for etudiant in etudiant_list %}
+		<li>
+			{{etudiant.nom}}
+		</li>
+	{% endfor %}
+</ul>
+{%else%}
+	<p> pas d'etudiant dans la base de donnés</p>
+{% endif %}
+</body>
+</html>
