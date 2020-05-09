@@ -1,19 +1,101 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html>{%load my_extras%}
+<html lang="en">
 <head>
-	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% load static %}
+  <link rel="stylesheet"  type="text/css"href="{% static 'css/login.css'  %}">
+	<title>login</title>
 </head>
 <body>
-{% if etudiant_list %}
-<ul>
-	{%for etudiant in etudiant_list %}
-		<li>
-			{{etudiant.nom}}
-		</li>
-	{% endfor %}
-</ul>
-{%else%}
-	<p> pas d'etudiant dans la base de donnés</p>
-{% endif %}
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="home">SGM</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+			<a class="nav-item nav-link active" href="home">Home <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="login" >login</a>
+			<a class="nav-item nav-link" href="register">register</a>
+			
+			</div>
+		</div>
+	</nav>
+
+	<div class="wrapper fadeInDown">
+  <div id="formContent">
+  
+
+    <!-- Tabs Titles -->
+	<table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">numero</th>
+      <th scope="col">prenom</th>
+      <th scope="col">nom</th>
+      <th scope="col">moyenne</th>
+    </tr>
+  </thead>
+  <tbody>
+	{% if etudiant_list %}
+		{% for etudiant in etudiant_list  %} 
+			<tr>
+				<th scope="row">{{forloop.counter}}</th>
+				<td>{{etudiant.prenom}}</td>
+				<td>{{etudiant.nom}}</td>
+				{% load my_extras %}
+				<td>{{ moyenne_list|lookup:forloop.counter0 }}</td>
+			</tr>
+		{% endfor %}		
+	{% endif %}
+	
+    
+   
+  </tbody>
+</table>
+    
+
+    
+
+    <!-- Login Form -->
+  
+
+    <!-- Remind Passowrd -->
+    
+
+  </div>
+</div>
+	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
